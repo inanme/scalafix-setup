@@ -40,7 +40,7 @@ lazy val commonSettings = Seq(
   semanticdbVersion := scalafixSemanticdb.revision,
   addCompilerPlugin(scalafixSemanticdb),
   sources in doc in Compile := List(),
-  scalacOptions in Test := Seq(
+  scalacOptions in Test ++= Seq(
     //A -X option suggests permanence, while a -Y could disappear at any time
     "-Yrangepos",
     "-encoding", "UTF-8", // source files are in UTF-8
@@ -56,7 +56,8 @@ lazy val commonSettings = Seq(
     "-Xlint",
     "-Wunused",
   ),
-  scalacOptions in Compile := Seq(
+  //You should make sure Xplugin is present
+  scalacOptions in Compile ++= Seq(
     //A -X option suggests permanence, while a -Y could disappear at any time
     "-Yrangepos",
     "-encoding", "UTF-8", // source files are in UTF-8
